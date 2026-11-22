@@ -28,32 +28,49 @@
       background-image:
         linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
+      background-size: 40px 40px;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950 pb-24 md:pb-0">
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950 pb-20 md:pb-0">
 
   <!-- 1. BARRE DÉMO AVANT / APRÈS (Sticky tout en haut) -->
   <div class="sticky top-0 z-50 bg-amber-500 text-slate-950 border-b border-amber-400/60 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-2.5">
-        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-extrabold tracking-wider uppercase bg-slate-950 text-amber-400">
-          Maquette Démo
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] sm:text-xs font-extrabold tracking-wider uppercase bg-slate-950 text-amber-400 shrink-0">
+          Démo
         </span>
-        <span class="text-sm font-bold tracking-tight">
+        <span class="text-xs sm:text-sm font-bold tracking-tight truncate">
           Yes auto <span class="hidden sm:inline font-medium text-slate-900/80">— Garage automobile à Nancy</span>
         </span>
       </div>
       <button
         type="button"
         id="open-compare-modal"
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm cursor-pointer"
+        class="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-900 text-white text-[11px] sm:text-sm font-semibold transition-all duration-200 shadow-sm cursor-pointer shrink-0"
       >
-        <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
         </svg>
-        <span>Comparer : Avant / Après</span>
+        <span>Avant / Après</span>
       </button>
     </div>
   </div>
@@ -61,16 +78,16 @@
   <!-- MODALE AVANT / APRÈS -->
   <div
     id="compare-modal"
-    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-sm"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-title"
   >
     <div class="relative w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
-      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/95">
+      <div class="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800 bg-slate-900/95">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Impact Digital 2026</span>
-          <h2 id="modal-title" class="text-lg sm:text-xl font-bold text-white">Transformation de la visibilité — Yes auto</h2>
+          <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-400">Impact Digital 2026</span>
+          <h2 id="modal-title" class="text-base sm:text-xl font-bold text-white">Transformation — Yes auto</h2>
         </div>
         <button
           type="button"
@@ -84,83 +101,83 @@
         </button>
       </div>
 
-      <div class="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="p-4 sm:p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <!-- Colonne Avant -->
-        <div class="rounded-xl border border-rose-500/30 bg-rose-950/15 p-5 flex flex-col justify-between">
+        <div class="rounded-xl border border-rose-500/30 bg-rose-950/15 p-4 sm:p-5 flex flex-col justify-between">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider mb-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider mb-3 sm:mb-4">
               <span class="w-2 h-2 rounded-full bg-rose-400"></span>
               Avant : Aucun site web
             </div>
-            <h3 class="text-base font-bold text-white mb-3">Absence de vitrine professionnelle</h3>
-            <ul class="space-y-3 text-sm text-slate-300">
+            <h3 class="text-sm sm:text-base font-bold text-white mb-3">Absence de vitrine professionnelle</h3>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <span>Invisibilité lors des recherches Google classiques sur Nancy pour l'entretien ou la réparation auto.</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <span>Impossible pour un automobiliste de consulter la liste complète des prestations avant d'appeler.</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <span>Aucun formulaire de demande de devis disponible en dehors des horaires d'ouverture.</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-rose-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <span>Garantie 1 an, paiement sans contact et accès PMR peu mis en avant pour rassurer le client.</span>
               </li>
             </ul>
           </div>
-          <div class="mt-6 pt-4 border-t border-rose-500/20 text-xs text-rose-300/80">
+          <div class="mt-5 pt-3.5 border-t border-rose-500/20 text-xs text-rose-300/80">
             Statut actuel constaté : aucun site web rattaché à l'établissement.
           </div>
         </div>
 
         <!-- Colonne Après -->
-        <div class="rounded-xl border border-emerald-500/30 bg-emerald-950/15 p-5 flex flex-col justify-between">
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-950/15 p-4 sm:p-5 flex flex-col justify-between">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-3 sm:mb-4">
               <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
               Après : Nouvelle vitrine 2026
             </div>
-            <h3 class="text-base font-bold text-white mb-3">Conçu pour convertir les conducteurs locaux</h3>
-            <ul class="space-y-3 text-sm text-slate-200">
+            <h3 class="text-sm sm:text-base font-bold text-white mb-3">Conçu pour convertir les conducteurs locaux</h3>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-200">
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <span><strong>100 % Mobile-First :</strong> bouton d'appel flottant accessible d'un seul pouce sur smartphone.</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <span><strong>Appel direct en 1 clic :</strong> numéro 06 51 41 17 69 mis en avant dès l'arrivée sur la page.</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <span><strong>Preuve sociale immédiate :</strong> note Google 4,7/5 (90 avis vérifiés) et garantie 1 an valorisées.</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <span><strong>Devis rapide 24h/24 & HTTPS :</strong> prise de contact structurée et itinéraire GPS en 1 clic.</span>
               </li>
             </ul>
           </div>
-          <div class="mt-6 pt-4 border-t border-emerald-500/20 text-xs text-emerald-300/90 font-medium">
+          <div class="mt-5 pt-3.5 border-t border-emerald-500/20 text-xs text-emerald-300/90 font-medium">
             Architecture légère, temps de chargement instantané et sécurité HTTPS native.
           </div>
         </div>
@@ -170,17 +187,17 @@
 
   <!-- 2. HEADER / NAVIGATION -->
   <header class="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-      <a href="#top" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform duration-300">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-2.5 sm:gap-3 group">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform duration-300">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
         </div>
         <div class="flex flex-col">
-          <span class="text-xl font-extrabold tracking-tight text-white">Yes <span class="text-amber-400">auto</span></span>
-          <span class="text-[11px] font-medium uppercase tracking-widest text-slate-400">Garage Nancy</span>
+          <span class="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-none">Yes <span class="text-amber-400">auto</span></span>
+          <span class="text-[10px] sm:text-[11px] font-medium uppercase tracking-widest text-slate-400 mt-0.5">Garage Nancy</span>
         </div>
       </a>
 
@@ -205,7 +222,7 @@
         <button
           type="button"
           id="mobile-menu-btn"
-          class="md:hidden p-2.5 rounded-xl border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors cursor-pointer"
+          class="md:hidden p-2 rounded-xl border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors cursor-pointer"
           aria-label="Ouvrir le menu"
           aria-expanded="false"
         >
@@ -217,25 +234,25 @@
     </div>
 
     <!-- Menu mobile -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 px-4 py-4 space-y-2">
-      <a href="#prestations" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Prestations</a>
-      <a href="#avis" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Avis Google (4,7/5)</a>
-      <a href="#devis" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Demander un devis</a>
-      <a href="#horaires" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Horaires &amp; Accès</a>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 px-4 py-3 space-y-1.5">
+      <a href="#prestations" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Prestations</a>
+      <a href="#avis" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Avis Google (4,7/5)</a>
+      <a href="#devis" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Demander un devis</a>
+      <a href="#horaires" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Horaires &amp; Accès</a>
     </div>
   </header>
 
   <main id="top">
     <!-- 3. SECTION HERO -->
-    <section class="relative overflow-hidden hero-grid py-16 sm:py-24 border-b border-slate-800/80">
+    <section class="relative overflow-hidden hero-grid py-10 sm:py-20 lg:py-24 border-b border-slate-800/80">
       <div class="absolute inset-0 bg-gradient-to-b from-amber-500/5 via-transparent to-slate-950 pointer-events-none"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <!-- Colonne gauche -->
-          <div class="lg:col-span-7 space-y-7">
-            <div class="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs sm:text-sm text-slate-300">
+          <div class="lg:col-span-7 space-y-5 sm:space-y-7 reveal" data-delay="0">
+            <div class="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-[11px] sm:text-sm text-slate-300">
               <span class="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -245,28 +262,28 @@
               <span class="text-slate-400">Lun–Ven 10h–18h | Sam 10h–15h</span>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+            <h1 class="text-[1.7rem] sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] sm:leading-[1.1]">
               Entretien &amp; réparation mécanique <span class="text-amber-400">toutes marques à Nancy</span>
             </h1>
 
-            <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+            <p class="text-sm sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
               Chez <strong class="text-white font-semibold">Yes auto</strong>, confiez votre véhicule à un garage de proximité pour la vidange, le freinage, les pneumatiques, le diagnostic électronique ou le pré-contrôle technique. Chaque intervention bénéficie d'une <strong class="text-white font-semibold">garantie 1 an pièces et main-d'œuvre</strong>.
             </p>
 
             <!-- Double CTA -->
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1">
               <a
                 href="tel:+33651411769"
-                class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-base transition-all duration-300 shadow-xl shadow-amber-500/20"
+                class="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-amber-500/20"
               >
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span>Appeler le 06 51 41 17 69</span>
               </a>
               <a
                 href="#devis"
-                class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-white font-bold text-base transition-all duration-300"
+                class="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-white font-bold text-sm sm:text-base transition-all duration-300"
               >
                 <span>Demander un devis gratuit</span>
                 <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -276,16 +293,16 @@
             </div>
 
             <!-- Preuve sociale immédiate -->
-            <div class="pt-3 flex flex-wrap items-center gap-4">
-              <div class="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="pt-1 sm:pt-2 flex flex-wrap items-center gap-3">
+              <div class="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
                 <div class="flex items-center gap-0.5 text-amber-400" aria-label="Note 4,7 sur 5">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 </div>
-                <div class="text-sm">
+                <div class="text-xs sm:text-sm">
                   <span class="font-extrabold text-white">4,7 / 5</span>
                   <span class="text-slate-400"> sur Google (</span>
                   <span class="font-semibold text-slate-200">90 avis vérifiés</span>
@@ -296,23 +313,23 @@
           </div>
 
           <!-- Colonne droite : Carte récapitulative des infos clés -->
-          <div class="lg:col-span-5">
-            <div class="rounded-2xl bg-slate-900/90 border border-slate-800 p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+          <div class="lg:col-span-5 reveal" data-delay="120">
+            <div class="rounded-2xl bg-slate-900/90 border border-slate-800 p-5 sm:p-7 shadow-2xl relative overflow-hidden">
               <div class="absolute top-0 right-0 w-36 h-36 bg-amber-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3.5 mb-5">
                 <div>
-                  <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Informations pratiques</span>
-                  <h2 class="text-xl font-bold text-white mt-0.5">Yes auto — Nancy</h2>
+                  <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-400">Informations pratiques</span>
+                  <h2 class="text-lg sm:text-xl font-bold text-white mt-0.5">Yes auto — Nancy</h2>
                 </div>
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[11px] sm:text-xs font-semibold">
                   Toutes marques
                 </span>
               </div>
 
-              <dl class="space-y-4 text-sm">
-                <div class="flex items-start gap-3.5">
-                  <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <dl class="space-y-3.5 text-xs sm:text-sm">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
@@ -322,9 +339,9 @@
                   </div>
                 </div>
 
-                <div class="flex items-start gap-3.5">
-                  <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
                   </div>
@@ -334,9 +351,9 @@
                   </div>
                 </div>
 
-                <div class="flex items-start gap-3.5">
-                  <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -346,9 +363,9 @@
                   </div>
                 </div>
 
-                <div class="flex items-start gap-3.5">
-                  <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -359,8 +376,8 @@
                 </div>
               </dl>
 
-              <div class="mt-6 pt-5 border-t border-slate-800 flex items-center justify-between gap-3">
-                <span class="text-xs text-slate-400">10 Rue Laurent Bonnevay, 54100 Nancy</span>
+              <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
+                <span class="text-[11px] sm:text-xs text-slate-400">10 Rue Laurent Bonnevay, 54100 Nancy</span>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=10+Rue+Laurent+Bonnevay+54100+Nancy"
                   target="_blank"
@@ -377,119 +394,119 @@
     </section>
 
     <!-- 4. SECTION SERVICES / PRESTATIONS -->
-    <section id="prestations" class="py-16 sm:py-24 border-b border-slate-800/80">
+    <section id="prestations" class="py-12 sm:py-20 lg:py-24 border-b border-slate-800/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl mb-12 sm:mb-16">
+        <div class="max-w-2xl mb-8 sm:mb-14 reveal" data-delay="0">
           <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Prestations mécaniques</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1.5 sm:mt-2">
             Nos services d'entretien et de réparation toutes marques
           </h2>
-          <p class="text-slate-400 mt-4 text-base sm:text-lg">
+          <p class="text-slate-400 mt-3 text-sm sm:text-lg">
             Une prise en charge complète pour la sécurité, la fiabilité et le bon fonctionnement de votre véhicule au quotidien à Nancy.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <!-- 01 -->
-          <article class="group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div class="flex items-center justify-between mb-5">
+          <article class="reveal group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1" data-delay="0">
+            <div class="flex items-center justify-between mb-4">
               <span class="text-xs font-extrabold tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md">01</span>
-              <svg class="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2.5">Entretien &amp; Vidange</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Entretien &amp; Vidange</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Révision périodique, remplacement d'huile moteur, filtres et contrôles des niveaux pour préserver la longévité de votre moteur toutes marques.
             </p>
           </article>
 
           <!-- 02 -->
-          <article class="group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div class="flex items-center justify-between mb-5">
+          <article class="reveal group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1" data-delay="70">
+            <div class="flex items-center justify-between mb-4">
               <span class="text-xs font-extrabold tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md">02</span>
-              <svg class="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2.5">Freinage (Plaquettes &amp; Disques)</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Freinage (Plaquettes &amp; Disques)</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Vérification complète du système de freinage et remplacement des plaquettes et disques avant/arrière pour votre sécurité sur la route.
             </p>
           </article>
 
           <!-- 03 -->
-          <article class="group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div class="flex items-center justify-between mb-5">
+          <article class="reveal group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1" data-delay="140">
+            <div class="flex items-center justify-between mb-4">
               <span class="text-xs font-extrabold tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md">03</span>
-              <svg class="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2.5">Pneumatiques (Montage &amp; Équilibrage)</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Pneumatiques (Montage &amp; Équilibrage)</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Montage de vos pneumatiques, équilibrage précis des roues et contrôle de l'usure et de la pression pour une tenue de route optimale.
             </p>
           </article>
 
           <!-- 04 -->
-          <article class="group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div class="flex items-center justify-between mb-5">
+          <article class="reveal group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1" data-delay="0">
+            <div class="flex items-center justify-between mb-4">
               <span class="text-xs font-extrabold tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md">04</span>
-              <svg class="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2.5">Diagnostic Électronique à la Valise</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Diagnostic Électronique à la Valise</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Lecture des codes défauts via valise de diagnostic multimarque pour identifier rapidement l'origine d'un voyant moteur ou d'une panne électronique.
             </p>
           </article>
 
           <!-- 05 -->
-          <article class="group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div class="flex items-center justify-between mb-5">
+          <article class="reveal group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1" data-delay="70">
+            <div class="flex items-center justify-between mb-4">
               <span class="text-xs font-extrabold tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md">05</span>
-              <svg class="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M3 12h18M3 12l3-3m-3 3l3 3m15-3l-3-3m3 3l-3 3" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2.5">Climatisation Automobile</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Climatisation Automobile</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Entretien et contrôle du circuit de climatisation pour assurer un confort thermique fiable en été comme pour le désembuage en hiver.
             </p>
           </article>
 
           <!-- 06 -->
-          <article class="group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1">
-            <div class="flex items-center justify-between mb-5">
+          <article class="reveal group rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/50 p-5 sm:p-7 transition-all duration-300 hover:-translate-y-1" data-delay="140">
+            <div class="flex items-center justify-between mb-4">
               <span class="text-xs font-extrabold tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md">06</span>
-              <svg class="w-6 h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2.5">Pré-Contrôle Technique</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Pré-Contrôle Technique</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Vérification préventive des points de sécurité essentiels avant votre passage au contrôle technique afin d'éviter une contre-visite.
             </p>
           </article>
         </div>
 
         <!-- Bandeau réassurance garantie -->
-        <div class="mt-10 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-amber-950/30 border border-slate-800 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div class="flex items-center gap-4">
-            <div class="w-11 h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="reveal mt-6 sm:mt-10 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-amber-950/30 border border-slate-800 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" data-delay="80">
+          <div class="flex items-start sm:items-center gap-3.5 sm:gap-4">
+            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div>
-              <p class="font-bold text-white">Garantie 1 an pièces et main-d'œuvre</p>
-              <p class="text-sm text-slate-400">Intervention mécanique toutes marques avec paiement par carte bancaire et sans contact accepté.</p>
+              <p class="font-bold text-white text-sm sm:text-base">Garantie 1 an pièces et main-d'œuvre</p>
+              <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Intervention mécanique toutes marques avec paiement par carte bancaire et sans contact accepté.</p>
             </div>
           </div>
-          <a href="#devis" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold transition-colors shrink-0">
+          <a href="#devis" class="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition-colors shrink-0">
             Demander un devis
           </a>
         </div>
@@ -497,15 +514,15 @@
     </section>
 
     <!-- 5. SECTION AVIS GOOGLE & CONFIANCE -->
-    <section id="avis" class="py-16 sm:py-24 bg-slate-900/30 border-b border-slate-800/80">
+    <section id="avis" class="py-12 sm:py-20 lg:py-24 bg-slate-900/30 border-b border-slate-800/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div class="reveal flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-8 sm:mb-12" data-delay="0">
           <div class="max-w-2xl">
             <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Réputation locale</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1.5 sm:mt-2">
               La confiance des automobilistes à Nancy
             </h2>
-            <p class="text-slate-400 mt-3 text-base sm:text-lg">
+            <p class="text-slate-400 mt-2.5 text-sm sm:text-lg">
               Sélection d'avis clients vérifiés issus de la fiche Google Maps de Yes auto.
             </p>
           </div>
@@ -514,101 +531,101 @@
             href="https://www.google.com/maps/place/Yes+auto/@48.7029443,6.1532179,17z/data=!3m1!4b1!4m6!3m5!1s0x4794a2bb0af70ddd:0xc35df96f3997d266!8m2!3d48.7029443!4d6.1557928!16s%2Fg%2F1v3kgfj3?entry=ttu&g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-slate-900 hover:bg-slate-800/90 border border-slate-800 hover:border-amber-500/40 shadow-lg transition-all duration-300"
+            class="inline-flex items-center justify-between sm:justify-start gap-4 px-5 py-3.5 sm:px-6 sm:py-4 rounded-2xl bg-slate-900 hover:bg-slate-800/90 border border-slate-800 hover:border-amber-500/40 shadow-lg transition-all duration-300"
           >
             <div>
-              <div class="text-3xl font-extrabold text-white leading-none">4,7<span class="text-lg text-slate-400 font-semibold">/5</span></div>
-              <div class="text-xs font-medium text-slate-400 mt-1">90 avis Google vérifiés</div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-white leading-none">4,7<span class="text-base sm:text-lg text-slate-400 font-semibold">/5</span></div>
+              <div class="text-[11px] sm:text-xs font-medium text-slate-400 mt-1">90 avis Google vérifiés</div>
             </div>
-            <div class="h-10 w-px bg-slate-800"></div>
-            <div class="flex items-center gap-1 text-amber-400">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <div class="h-9 w-px bg-slate-800"></div>
+            <div class="flex items-center gap-0.5 sm:gap-1 text-amber-400">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
             </div>
           </a>
         </div>
 
         <!-- Meilleurs avis Google réels de Yes auto -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           <!-- Avis 1 -->
-          <article class="rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-amber-500/40 p-6 flex flex-col justify-between transition-all duration-300">
+          <article class="reveal rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-amber-500/40 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300" data-delay="0">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Avis Google</span>
+              <div class="flex items-center justify-between mb-3.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Avis Google</span>
                 <div class="flex items-center gap-0.5 text-amber-400" aria-label="5 étoiles sur 5">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 </div>
               </div>
-              <p class="text-sm text-slate-200 leading-relaxed">
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
                 « Fidèle client depuis 8 ans, devenu ami, je ne peux que recommander le binôme de mécaniciens hors-pair Yassine et Aziz très à l'écoute et au rapport qualité-prix imbattable sur Nancy. »
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
               <span class="font-semibold text-slate-300">Client vérifié Google</span>
               <span class="text-amber-400 font-bold">5 / 5</span>
             </div>
           </article>
 
           <!-- Avis 2 -->
-          <article class="rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-amber-500/40 p-6 flex flex-col justify-between transition-all duration-300">
+          <article class="reveal rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-amber-500/40 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300" data-delay="90">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Avis Google</span>
+              <div class="flex items-center justify-between mb-3.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Avis Google</span>
                 <div class="flex items-center gap-0.5 text-amber-400" aria-label="5 étoiles sur 5">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 </div>
               </div>
-              <p class="text-sm text-slate-200 leading-relaxed">
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
                 « Je recommande, travail fais en temps et en heure, vraiment professionnel ! »
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
               <span class="font-semibold text-slate-300">Client vérifié Google</span>
               <span class="text-amber-400 font-bold">5 / 5</span>
             </div>
           </article>
 
           <!-- Avis 3 -->
-          <article class="rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-amber-500/40 p-6 flex flex-col justify-between transition-all duration-300">
+          <article class="reveal rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-amber-500/40 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300" data-delay="180">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Avis Google</span>
+              <div class="flex items-center justify-between mb-3.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Avis Google</span>
                 <div class="flex items-center gap-0.5 text-amber-400" aria-label="5 étoiles sur 5">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 </div>
               </div>
-              <p class="text-sm text-slate-200 leading-relaxed">
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
                 « Excellent travail capable de détecter la moindre petite panne ! »
               </p>
             </div>
-            <div class="mt-5 pt-3.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
               <span class="font-semibold text-slate-300">Client vérifié Google</span>
               <span class="text-amber-400 font-bold">5 / 5</span>
             </div>
           </article>
         </div>
 
-        <div class="mt-8 flex justify-center sm:justify-end">
+        <div class="mt-6 sm:mt-8 flex justify-center sm:justify-end">
           <a
             href="https://www.google.com/maps/place/Yes+auto/@48.7029443,6.1532179,17z/data=!3m1!4b1!4m6!3m5!1s0x4794a2bb0af70ddd:0xc35df96f3997d266!8m2!3d48.7029443!4d6.1557928!16s%2Fg%2F1v3kgfj3?entry=ttu&g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors"
+            class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors"
           >
             <span>Consulter les 90 avis sur Google Maps</span>
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -620,28 +637,28 @@
     </section>
 
     <!-- 6. SECTION DEVIS / CONTACT RAPIDE -->
-    <section id="devis" class="py-16 sm:py-24 border-b border-slate-800/80">
+    <section id="devis" class="py-12 sm:py-20 lg:py-24 border-b border-slate-800/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div class="lg:col-span-5 space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div class="lg:col-span-5 space-y-5 reveal" data-delay="0">
             <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Devis &amp; Rendez-vous</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
               Besoin d'un entretien ou d'une réparation ?
             </h2>
-            <p class="text-slate-400 text-base leading-relaxed">
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
               Décrivez votre besoin via ce formulaire rapide ou appelez directement le garage pour obtenir un créneau d'intervention à Nancy.
             </p>
 
-            <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6 space-y-4">
+            <div class="rounded-2xl bg-slate-900 border border-slate-800 p-5 sm:p-6 space-y-4">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
                 <div>
-                  <div class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Ligne directe</div>
-                  <a href="tel:+33651411769" class="text-lg font-extrabold text-white hover:text-amber-400 transition-colors">
+                  <div class="text-[11px] sm:text-xs text-slate-400 uppercase font-semibold tracking-wider">Ligne directe</div>
+                  <a href="tel:+33651411769" class="text-base sm:text-lg font-extrabold text-white hover:text-amber-400 transition-colors">
                     06 51 41 17 69
                   </a>
                 </div>
@@ -654,18 +671,18 @@
             </div>
           </div>
 
-          <div class="lg:col-span-7">
-            <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-6 sm:p-8 shadow-xl">
-              <form id="quote-form" class="space-y-5">
+          <div class="lg:col-span-7 reveal" data-delay="120">
+            <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 sm:p-8 shadow-xl">
+              <form id="quote-form" class="space-y-4 sm:space-y-5">
                 <div>
-                  <label for="service-type" class="block text-sm font-semibold text-slate-200 mb-2">
+                  <label for="service-type" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-1.5 sm:mb-2">
                     Type de besoin
                   </label>
                   <select
                     id="service-type"
                     name="service-type"
                     required
-                    class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-4 py-3 text-sm text-white outline-none transition-all"
+                    class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm text-white outline-none transition-all"
                   >
                     <option value="">Sélectionnez une prestation...</option>
                     <option value="Entretien et vidange">Entretien et vidange</option>
@@ -678,9 +695,9 @@
                   </select>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
-                    <label for="client-name" class="block text-sm font-semibold text-slate-200 mb-2">
+                    <label for="client-name" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-1.5 sm:mb-2">
                       Votre nom
                     </label>
                     <input
@@ -689,11 +706,11 @@
                       name="client-name"
                       required
                       placeholder="Ex. : Nom et prénom"
-                      class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-all"
+                      class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm text-white placeholder-slate-500 outline-none transition-all"
                     />
                   </div>
                   <div>
-                    <label for="client-phone" class="block text-sm font-semibold text-slate-200 mb-2">
+                    <label for="client-phone" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-1.5 sm:mb-2">
                       Téléphone
                     </label>
                     <input
@@ -702,27 +719,27 @@
                       name="client-phone"
                       required
                       placeholder="06 .. .. .. .."
-                      class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-all"
+                      class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm text-white placeholder-slate-500 outline-none transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label for="client-details" class="block text-sm font-semibold text-slate-200 mb-2">
+                  <label for="client-details" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-1.5 sm:mb-2">
                     Détails (marque/modèle du véhicule, besoin constaté)
                   </label>
                   <textarea
                     id="client-details"
                     name="client-details"
-                    rows="4"
+                    rows="3"
                     placeholder="Indiquez la marque et le modèle de votre véhicule ainsi que votre disponibilité souhaitée..."
-                    class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-all resize-y"
+                    class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm text-white placeholder-slate-500 outline-none transition-all resize-y"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm sm:text-base transition-all duration-300 shadow-lg shadow-amber-500/20 cursor-pointer"
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm sm:text-base transition-all duration-300 shadow-lg shadow-amber-500/20 cursor-pointer"
                 >
                   <span>Envoyer ma demande de devis</span>
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -732,22 +749,22 @@
               </form>
 
               <!-- Message de confirmation JS -->
-              <div id="quote-confirmation" class="hidden rounded-xl bg-emerald-950/30 border border-emerald-500/40 p-6 space-y-4">
+              <div id="quote-confirmation" class="hidden rounded-xl bg-emerald-950/30 border border-emerald-500/40 p-5 sm:p-6 space-y-4">
                 <div class="flex items-start gap-3">
-                  <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-bold text-white">Demande enregistrée (mode démo)</h3>
-                    <p id="confirmation-summary" class="text-sm text-slate-300 mt-1 leading-relaxed"></p>
+                    <h3 class="text-base sm:text-lg font-bold text-white">Demande enregistrée (mode démo)</h3>
+                    <p id="confirmation-summary" class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed"></p>
                   </div>
                 </div>
-                <div class="flex flex-wrap items-center gap-3 pt-2">
+                <div class="flex flex-wrap items-center gap-3 pt-1">
                   <a
                     href="tel:+33651411769"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-colors"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-colors"
                   >
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -757,7 +774,7 @@
                   <button
                     type="button"
                     id="reset-quote-form"
-                    class="px-4 py-2.5 rounded-xl border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white text-sm font-medium transition-colors cursor-pointer"
+                    class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white text-xs sm:text-sm font-medium transition-colors cursor-pointer"
                   >
                     Nouvelle demande
                   </button>
@@ -770,45 +787,45 @@
     </section>
 
     <!-- 7. SECTION HORAIRES & ACCÈS -->
-    <section id="horaires" class="py-16 sm:py-24 bg-slate-900/30">
+    <section id="horaires" class="py-12 sm:py-20 lg:py-24 bg-slate-900/30">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           <!-- Horaires -->
-          <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-6 sm:p-8 flex flex-col justify-between">
+          <div class="reveal rounded-2xl bg-slate-900/80 border border-slate-800 p-5 sm:p-8 flex flex-col justify-between" data-delay="0">
             <div>
               <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Horaires d'ouverture</span>
-              <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-6">Quand venir chez Yes auto</h2>
+              <h2 class="text-xl sm:text-3xl font-extrabold text-white mt-1.5 mb-5 sm:mb-6">Quand venir chez Yes auto</h2>
 
               <div class="overflow-hidden rounded-xl border border-slate-800">
-                <table class="w-full text-sm text-left">
+                <table class="w-full text-xs sm:text-sm text-left">
                   <tbody class="divide-y divide-slate-800">
                     <tr class="bg-slate-950/50">
-                      <th scope="row" class="px-4 py-3.5 font-semibold text-white">Lundi</th>
-                      <td class="px-4 py-3.5 text-right text-slate-300 font-medium">10h00 – 18h00</td>
+                      <th scope="row" class="px-4 py-3 font-semibold text-white">Lundi</th>
+                      <td class="px-4 py-3 text-right text-slate-300 font-medium">10h00 – 18h00</td>
                     </tr>
                     <tr class="bg-slate-950/30">
-                      <th scope="row" class="px-4 py-3.5 font-semibold text-white">Mardi</th>
-                      <td class="px-4 py-3.5 text-right text-slate-300 font-medium">10h00 – 18h00</td>
+                      <th scope="row" class="px-4 py-3 font-semibold text-white">Mardi</th>
+                      <td class="px-4 py-3 text-right text-slate-300 font-medium">10h00 – 18h00</td>
                     </tr>
                     <tr class="bg-slate-950/50">
-                      <th scope="row" class="px-4 py-3.5 font-semibold text-white">Mercredi</th>
-                      <td class="px-4 py-3.5 text-right text-slate-300 font-medium">10h00 – 18h00</td>
+                      <th scope="row" class="px-4 py-3 font-semibold text-white">Mercredi</th>
+                      <td class="px-4 py-3 text-right text-slate-300 font-medium">10h00 – 18h00</td>
                     </tr>
                     <tr class="bg-slate-950/30">
-                      <th scope="row" class="px-4 py-3.5 font-semibold text-white">Jeudi</th>
-                      <td class="px-4 py-3.5 text-right text-slate-300 font-medium">10h00 – 18h00</td>
+                      <th scope="row" class="px-4 py-3 font-semibold text-white">Jeudi</th>
+                      <td class="px-4 py-3 text-right text-slate-300 font-medium">10h00 – 18h00</td>
                     </tr>
                     <tr class="bg-slate-950/50">
-                      <th scope="row" class="px-4 py-3.5 font-semibold text-white">Vendredi</th>
-                      <td class="px-4 py-3.5 text-right text-slate-300 font-medium">10h00 – 18h00</td>
+                      <th scope="row" class="px-4 py-3 font-semibold text-white">Vendredi</th>
+                      <td class="px-4 py-3 text-right text-slate-300 font-medium">10h00 – 18h00</td>
                     </tr>
                     <tr class="bg-slate-950/30">
-                      <th scope="row" class="px-4 py-3.5 font-semibold text-white">Samedi</th>
-                      <td class="px-4 py-3.5 text-right text-amber-400 font-semibold">10h00 – 15h00</td>
+                      <th scope="row" class="px-4 py-3 font-semibold text-white">Samedi</th>
+                      <td class="px-4 py-3 text-right text-amber-400 font-semibold">10h00 – 15h00</td>
                     </tr>
                     <tr class="bg-slate-950/50">
-                      <th scope="row" class="px-4 py-3.5 font-semibold text-slate-400">Dimanche</th>
-                      <td class="px-4 py-3.5 text-right text-rose-400 font-semibold">Fermé</td>
+                      <th scope="row" class="px-4 py-3 font-semibold text-slate-400">Dimanche</th>
+                      <td class="px-4 py-3 text-right text-rose-400 font-semibold">Fermé</td>
                     </tr>
                   </tbody>
                 </table>
@@ -817,55 +834,55 @@
           </div>
 
           <!-- Accès & Itinéraire -->
-          <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-6 sm:p-8 flex flex-col justify-between">
+          <div class="reveal rounded-2xl bg-slate-900/80 border border-slate-800 p-5 sm:p-8 flex flex-col justify-between" data-delay="100">
             <div>
               <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Localisation</span>
-              <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-6">Accéder au garage à Nancy</h2>
+              <h2 class="text-xl sm:text-3xl font-extrabold text-white mt-1.5 mb-5 sm:mb-6">Accéder au garage à Nancy</h2>
 
-              <div class="rounded-xl bg-slate-950 border border-slate-800 p-5 space-y-4">
-                <div class="flex items-start gap-3.5">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <div class="rounded-xl bg-slate-950 border border-slate-800 p-4 sm:p-5 space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
                   <div>
-                    <p class="font-bold text-white text-base">Yes auto</p>
-                    <p class="text-slate-300 text-sm mt-0.5">10 Rue Laurent Bonnevay</p>
-                    <p class="text-slate-300 text-sm">54100 Nancy</p>
+                    <p class="font-bold text-white text-sm sm:text-base">Yes auto</p>
+                    <p class="text-slate-300 text-xs sm:text-sm mt-0.5">10 Rue Laurent Bonnevay</p>
+                    <p class="text-slate-300 text-xs sm:text-sm">54100 Nancy</p>
                   </div>
                 </div>
 
-                <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-2">
-                  <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium">
+                <div class="pt-3.5 border-t border-slate-800 flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] sm:text-xs text-slate-300 font-medium">
                     Accès PMR
                   </span>
-                  <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium">
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] sm:text-xs text-slate-300 font-medium">
                     Carte bancaire acceptée
                   </span>
-                  <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium">
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] sm:text-xs text-slate-300 font-medium">
                     Sans contact accepté
                   </span>
                 </div>
               </div>
             </div>
 
-            <div class="mt-8 space-y-3">
+            <div class="mt-6 sm:mt-8 space-y-2.5 sm:space-y-3">
               <a
                 href="https://www.google.com/maps/search/?api=1&query=10+Rue+Laurent+Bonnevay+54100+Nancy"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm sm:text-base transition-all duration-300 shadow-lg shadow-amber-500/20"
+                class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm sm:text-base transition-all duration-300 shadow-lg shadow-amber-500/20"
               >
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                 </svg>
                 <span>Ouvrir l'itinéraire Google Maps</span>
               </a>
               <a
                 href="tel:+33651411769"
-                class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-sm transition-colors"
+                class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-xs sm:text-sm transition-colors"
               >
                 <span>Appeler le garage : 06 51 41 17 69</span>
               </a>
@@ -877,8 +894,8 @@
   </main>
 
   <!-- FOOTER & MENTIONS LÉGALES -->
-  <footer id="mentions-legales" class="border-t border-slate-800 bg-slate-950 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+  <footer id="mentions-legales" class="border-t border-slate-800 bg-slate-950 py-10 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
         <div>
           <p class="font-bold text-slate-200 text-sm">Yes auto — Garage automobile à Nancy</p>
@@ -891,13 +908,13 @@
           class="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold transition-colors"
         >
           <span>Fiche officielle Annuaire des Entreprises (data.gouv.fr)</span>
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </a>
       </div>
 
-      <div class="pt-6 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-400 leading-relaxed">
+      <div class="pt-5 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 text-xs text-slate-400 leading-relaxed">
         <div class="space-y-1.5">
           <h3 class="text-xs font-bold uppercase tracking-wider text-slate-200">Mentions légales</h3>
           <p><strong class="text-slate-300">Éditeur du site :</strong> Yassine Fathi — Enseigne commerciale : Yes auto</p>
@@ -908,7 +925,7 @@
           <h3 class="text-xs font-bold uppercase tracking-wider text-slate-200">Contact &amp; Informations publiques</h3>
           <p><strong class="text-slate-300">Téléphone :</strong> <a href="tel:+33651411769" class="hover:text-amber-400 transition-colors">06 51 41 17 69</a></p>
           <p><strong class="text-slate-300">Activité :</strong> Entretien et réparation mécanique automobile toutes marques</p>
-          <p>
+          <p class="break-words">
             <strong class="text-slate-300">Registre public :</strong>
             <a
               href="https://annuaire-entreprises.data.gouv.fr/entreprise/yassine-fathi-yes-auto-513634857"
@@ -925,12 +942,12 @@
   </footer>
 
   <!-- BOUTON D'APPEL FLOTTANT MOBILE-FIRST -->
-  <div class="md:hidden fixed bottom-4 inset-x-4 z-40">
+  <div class="md:hidden fixed bottom-3 inset-x-3 z-40">
     <a
       href="tel:+33651411769"
-      class="w-full flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-base shadow-2xl shadow-amber-500/30 border border-amber-300/50 transition-transform active:scale-[0.98]"
+      class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm shadow-2xl shadow-amber-500/30 border border-amber-300/50 transition-transform active:scale-[0.98]"
     >
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
       </svg>
       <span>Appeler Yes auto • 06 51 41 17 69</span>
@@ -940,6 +957,39 @@
   <!-- JAVASCRIPT INTERACTIF -->
   <script>
     (function () {
+      // Apparition progressive en fade-in au fil du scroll
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(
+          function (entries, observer) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = el.getAttribute('data-delay');
+                if (delay) {
+                  el.style.transitionDelay = delay + 'ms';
+                }
+                el.classList.add('is-visible');
+                observer.unobserve(el);
+              }
+            });
+          },
+          {
+            threshold: 0.08,
+            rootMargin: '0px 0px -30px 0px',
+          }
+        );
+
+        revealElements.forEach(function (el) {
+          revealObserver.observe(el);
+        });
+      } else {
+        revealElements.forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+      }
+
       // Modale Avant / Après
       const modal = document.getElementById('compare-modal');
       const openBtn = document.getElementById('open-compare-modal');
